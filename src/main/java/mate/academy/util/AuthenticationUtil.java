@@ -23,10 +23,9 @@ public class AuthenticationUtil {
     public static String hashPassword(String password, byte[] salt) {
         try {
             MessageDigest digest = MessageDigest.getInstance(HASHING_ALGORITHM);
-            digest.digest(password.getBytes(StandardCharsets.UTF_8));
             digest.update(salt);
             StringBuilder builder = new StringBuilder();
-            for (byte b : digest.digest()) {
+            for (byte b : digest.digest(password.getBytes(StandardCharsets.UTF_8))) {
                 builder.append(String.format("%02x", b));
             }
             return builder.toString();

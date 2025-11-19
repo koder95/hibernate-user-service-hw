@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Cannot persist an user: " + user, e);
+            throw new DataProcessingException("Cannot persist an user: " + user, e);
         } finally {
             if (session != null) {
                 session.close();
