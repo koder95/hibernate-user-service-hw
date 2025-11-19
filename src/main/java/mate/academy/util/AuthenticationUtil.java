@@ -31,7 +31,8 @@ public class AuthenticationUtil {
             }
             return builder.toString();
         } catch (NoSuchAlgorithmException e) {
-            throw new UnsupportedOperationException("Unsupported algorithm: " + HASHING_ALGORITHM, e);
+            String msg = "Unsupported algorithm: " + HASHING_ALGORITHM;
+            throw new UnsupportedOperationException(msg, e);
         }
     }
 }
